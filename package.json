@@ -1,0 +1,38 @@
+{
+  "name": "nathankim7.github.io",
+  "version": "1.0.0",
+  "description": "Personal Website!",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --progress --mode production",
+    "dev-build": "webpack --progress --mode development",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --progress --mode development --watch",
+    "dev": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathankim7/nathankim7.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathankim7/nathankim7.github.io/issues"
+  },
+  "homepage": "https://github.com/nathankim7/nathankim7.github.io#readme",
+  "dependencies": {
+    "two.js": "^0.7.0-stable.1",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "vue-loader": "^15.9.3",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
