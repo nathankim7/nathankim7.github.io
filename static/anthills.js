@@ -61,10 +61,7 @@ function poissonSampleHoles(holes) {
             const r = RADIUS + EPSILON;
             var x = parent.x + r * Math.cos(a);
             var y = parent.y + r * Math.sin(a);
-
-            //var dot = two.makeCircle(x, y, 5);
-            // dot.fill = 'black';
-
+            
             if (closestHole(x, y, RADIUS) == -1) {
                 var newHole = Hole(x, y, 20);
                 grid[y / CELLSIZE | 0][x / CELLSIZE | 0] = newHole;
@@ -81,21 +78,6 @@ function poissonSampleHoles(holes) {
         }
     }
 }
-
-// function placeAnthill(x, y) {
-//     var closestHole = holes.slice().sort((a, b) => distSq(a.x, x, a.y, y) - distSq(b.x, x, b.y, y));
-//     var c = closestHole[0];
-
-//     if (distSq(c.x, x, c.y, y) < MIN_TRAVEL_DISTANCE ** 2)
-//         return;
-
-//     var hill = Anthill(x, y, 10, c);
-
-//     for (var i = 0; i < party_size; i++)
-//         hill.ants.push(Ant(hill));
-
-//     anthills.push(hill);
-// }
 
 // classes
 const Point = (x, y, r, c) => {
@@ -139,7 +121,7 @@ const Hole = (x, y) => {
     two.update();
     document.getElementById(self.sprite.id).addEventListener('mousedown', e => {
         self.flip();
-        paths.push(Path(self));
+        paths.push(Path(self, Math.random() * 0.4 + 0.3));
     });
     return self;
 }
@@ -150,7 +132,7 @@ const Ant = (path, hill, p) => {
         ...Point(hill.x, hill.y, 10, p == 1 ? CONTRAST_C : '#7ac253'),
         p: p,
         path: path,
-        a: 0,
+        progress: 0, // radian angle covered if curve, pixels covered if straight
         ind: 0
     }
 
@@ -170,20 +152,29 @@ const Ant = (path, hill, p) => {
             }
 
             if (self.ind == self.path.num) {
-                self.path.make(self.x, self.y, self.path.dirs[self.ind - 1]);
+                self.path.make(self.x, self.y, self.path.moves[self.ind - 1].d);
+            }
+
+            let move = self.path.moves[self.ind];
+
+            if (move.type == 'curve') {
+                self.progress += ANT_V / move.r; let a = self.progress;
+                self.x = move.c.x + move.r * Math.cos(move.turn * a + (move.d + 2) * Math.PI / 2);
+                self.y = move.c.y - move.r * Math.sin(move.turn * a + (move.d + 2) * Math.PI / 2);
+            }
+            else if (move.type == 'straight') {
+                self.progress += ANT_V;
+                self.x += (move.d > 1 ? -1 : 1) * ((move.d + 1) % 2) * ANT_V;
+                self.y += (move.d > 1 ? 1 : -1) * (move.d % 2) * ANT_V;
             }
             
-            let d = self.path.dirs[self.ind] + 4, r = self.path.lens[self.ind], c = self.path.centers[self.ind];
-            self.a += ANT_V / r;
-            self.x = c.x + r * Math.cos((1 - 2 * (d % 2)) * self.a + (d / 2 | 0) * Math.PI / 2);
             self.x = (self.x + two.width) % two.width;
-            self.y = c.y - r * Math.sin((1 - 2 * (d % 2)) * self.a + (d / 2 | 0) * Math.PI / 2);
             self.y = (self.y + two.height) % two.height;
             self.render();
 
-            if (self.a > Math.PI / 2) {
+            if (self.progress > (move.type == 'curve' ? Math.PI / 2 : move.l)) {
                 self.ind++;
-                self.a = 0;
+                self.progress = 0;
             }
         }
     });
@@ -191,31 +182,52 @@ const Ant = (path, hill, p) => {
     return {...self, ...behaviours(self)};
 }
 
-const Path = (startHole) => {
+const Path = (startHole, straightness) => {
     const self = {
         start: startHole,
-        dirs: [],
-        lens: [],
-        centers: [],
-        num: 0,
+        straightness: straightness,
         startFrame: two.frameCount,
+        moves: [],
         ants: [],
+        num: 0,
         antNum: 0,
         make(px, py, pd) {
-            let d = (Math.random() > 0.5 ? pd + 2 - (pd % 2) : pd + 7 - (pd % 2)) % 8;
-            let r = Math.random() * (MAX_PATH_RADIUS - MIN_PATH_RADIUS) + MIN_PATH_RADIUS;
-            let c = { 
-                x: px + r * Math.cos(Math.PI / 2 * (d / 2 | 0)),
-                y: py - r * Math.sin(Math.PI / 2 * (d / 2 | 0))
-            };
-            this.dirs.push(d);
-            this.lens.push(r);
-            this.centers.push(c);
-            this.num++;
+            let type = Math.random();
 
-            // let tmp = two.makeCircle(c.x, c.y, 5);
-            // tmp.noStroke();
-            // tmp.fill = (this.num * 10000).toString(16);
+            if (type < this.straightness) {
+                let l = Math.random() * (MAX_PATH_RADIUS - MIN_PATH_RADIUS) + MIN_PATH_RADIUS;
+                this.moves.push({
+                    type: 'straight',
+                    d: pd,
+                    l: l,
+                });
+            }
+            else {
+                let move = {
+                    type: 'curve',
+                    r: Math.random() * (MAX_PATH_RADIUS - MIN_PATH_RADIUS) + MIN_PATH_RADIUS
+                };
+
+                let turn = Math.random();
+
+                if (turn > 0.5) {
+                    move.d = (pd + 1) % 4;
+                    move.turn = 1;
+                }
+                else {
+                    move.d = (pd + 3) % 4;
+                    move.turn = -1;
+                }
+
+                move.c = { 
+                    x: px + move.r * Math.cos(Math.PI / 2 * move.d),
+                    y: py - move.r * Math.sin(Math.PI / 2 * move.d)
+                };
+
+                this.moves.push(move);
+            }
+
+            this.num++;
         }
     }
 
@@ -234,7 +246,6 @@ two.bind('update', (f) => {
 
     paths.forEach(p => {
         p.ants = p.ants.filter(a => !a.flags.remove);
-        //console.log(p.ants.length);
 
         if ((f - p.startFrame) % ANT_RATE == 0 && p.antNum < PARTY_SIZE) {
             p.ants.push(Ant(p, p.start, p.start.polarity));
