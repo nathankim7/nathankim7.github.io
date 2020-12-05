@@ -55,7 +55,7 @@ export default {
 }
 
 #content {
-	font-family: 'Work Sans', serif;
+	font-family: 'Work Sans', 'Helvetica', sans-serif;
 	background-color: rgba(255, 255, 255, 0.9);
 	z-index: 2;
 	max-width: 50%;
