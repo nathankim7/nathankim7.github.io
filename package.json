@@ -22,16 +22,21 @@
   },
   "homepage": "https://github.com/nathankim7/nathankim7.github.io#readme",
   "dependencies": {
+    "@vue/compiler-sfc": "^3.0.3",
     "two.js": "^0.7.0-stable.1",
-    "vue": "^2.6.12"
+    "vue": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.1.0",
-    "vue-loader": "^15.9.3",
+    "css-loader": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "style-loader": "^2.0.0",
+    "vue-loader": "^16.0.0",
+    "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.12",
-    "webpack": "^4.44.2",
+    "webpack": "^5.8.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }

@@ -1,5 +1,5 @@
 var path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
     mode: 'development',
@@ -25,6 +25,24 @@ module.exports = {
                     plugins: ['@babel/plugin-proposal-object-rest-spread']
                 }
             }
+        }, {
+            test: /\.css$/i,
+            use: ['style-loader', 'css-loader'],
+    
+        }, {
+            test: /\.(woff|woff2|eot|ttf|otf)$/i,
+            type: 'asset/resource'
+        }, {
+            test: /\.(png|svg|jpg|jpeg|gif)$/i,
+            type: 'asset/resource',
+        }, {
+            test: /\.(pdf)$/i,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]'
+                }
+            }]
         }]
     },
     plugins: [
