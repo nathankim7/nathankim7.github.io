@@ -10,7 +10,7 @@
 				<a class="i f3 mh2 mb2" href="#">resume</a>
 				<p class="i f3 ml2 mt0 mb3 mr0">contact: <a href="#">nathangk@stanford.edu</a></p>
 			</div> -->
-			<p style="font-size: 1.3rem; line-height: 1.3em" class="ma0 mt3 w-100">Hi! I'm a freshman student at Stanford University interested in <p class="rainbow-text">computers</p> and <p class="rainbow-text">language</p> and especially <p class="rainbow-text">things that combine the two</p>. Intermittently, I've also been a full-stack web dev and an Android developer. Feel free to check out my code on <a href="https://github.com/nathankim7">Github</a>, connect with me on <a href="https://www.linkedin.com/in/nathan-kim-71b568155/">Linkedin</a>, and take my <a v-bind:href="cv">resume</a>. Any questions or comments can be directed to me by filling in the blanks at <a class="i" href="#">nathangk@st_nf_rd.edu</a>.</p>
+			<p style="font-size: 1.3rem; line-height: 1.3em" class="ma0 mt3 w-100">Hi! I'm a freshman student at Stanford University interested in <p class="rainbow-text">computers</p> and <p class="rainbow-text">language</p> and especially <p class="rainbow-text">things that combine the two</p>. Intermittently, I've also been a full-stack web dev and an Android developer. Feel free to check out my code on <a href="https://github.com/nathankim7">Github</a>, connect with me on <a href="https://www.linkedin.com/in/nathan-kim-71b568155/">Linkedin</a>, and take my <a v-bind:href="cv">resume</a>. Any questions or comments can be directed to me by filling in the blanks at <a href="#">na&#116;&#104;angk&#64;st_n&#102;_rd&#46;edu</a>.</p>
 			<!-- <ul style="font-size: 1.3rem" class="mt2 ma0 mb5 pl3">
 				<li>if</li>
 				<li>i have</li>
