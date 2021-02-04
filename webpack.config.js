@@ -1,5 +1,7 @@
 var path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
+const marked = require("marked");
+const renderer = new marked.Renderer();
 
 module.exports = {
     mode: 'development',
@@ -43,7 +45,7 @@ module.exports = {
                     name: '[name].[ext]'
                 }
             }]
-        }]
+        }, ], 
     },
     plugins: [
         new VueLoaderPlugin()

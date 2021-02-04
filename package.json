@@ -23,6 +23,7 @@
   "homepage": "https://github.com/nathankim7/nathankim7.github.io#readme",
   "dependencies": {
     "@vue/compiler-sfc": "^3.0.3",
+    "marked": "^1.2.7",
     "two.js": "^0.7.0-stable.1",
     "vue": "^3.0.3"
   },
@@ -32,6 +33,8 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^5.0.1",
     "file-loader": "^6.2.0",
+    "html-loader": "^1.3.2",
+    "markdown-loader": "^6.0.0",
     "style-loader": "^2.0.0",
     "vue-loader": "^16.0.0",
     "vue-style-loader": "^4.1.2",
