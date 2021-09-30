@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     entry: {
         index: './src/App.js',
-        //anthills: './src/anthills.js'
+        blogpost: './src/BlogPost.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -51,7 +51,9 @@ module.exports = {
         new VueLoaderPlugin()
     ],
     devServer: {
-        publicPath: '/static/',
+        static: {
+            directory: path.join(__dirname, ''),
+        },
         compress: true,
         hot: true
     }
