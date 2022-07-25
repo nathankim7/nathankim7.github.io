@@ -131,6 +131,13 @@
     "set-cookie-parser" "^2.4.8"
     "tiny-glob" "^0.2.9"
 
+"@sveltejs/adapter-static@^1.0.0-next.38":
+  "integrity" "sha512-O1b264K62E3OrUnsFxMjKn3CUJF50fxGcW0rWk8fa5kjzskPsSyTxS3jnWNryFaVJ3oSUtx57m4qFW43S1910Q=="
+  "resolved" "https://registry.npmjs.org/@sveltejs/adapter-static/-/adapter-static-1.0.0-next.38.tgz"
+  "version" "1.0.0-next.38"
+  dependencies:
+    "tiny-glob" "^0.2.9"
+
 "@sveltejs/adapter-vercel@1.0.0-next.65":
   "integrity" "sha512-RV3HL7Ic7pGgIoBSHPwN1pBX96Km1X683oHImPHAKX9h/WOvJZ3bY5+IWNRcR8tx9rPB5gfMRg+msvPSBr3RVw=="
   "resolved" "https://registry.npmjs.org/@sveltejs/adapter-vercel/-/adapter-vercel-1.0.0-next.65.tgz"
