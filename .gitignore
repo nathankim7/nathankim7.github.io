@@ -1,8 +1,8 @@
-**/.vscode/*
-*.txt
-*.pkl
-*.png
-*.jpg
-**/__pycache__/*
-node_modules/
-.DS_STORE
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example

@@ -2,11 +2,12 @@
 
 This year's NACLO Open Round contest is happening on Thursday, January 28th, and I made a video walkthrough of one of my favourite problems to help get the word out!
 
-***
+---
 
 For those who aren't in the know, NACLO (the North American Computational Linguistics Open competition) is the foremost high school linguistics contest for students in the United States and Canada. It's a proper three-hour, pen-and-paper contest, but the problems are probably unlike anything you've ever had to solve for an academic contest before: instead of angle bashing or reaction balancing, each problem will ask you only to look at some linguistic data--be they ancient tablets, Pho bar menus or encoding trees--and learn something about the language using only your own two eyes.
 
 ![Kucing besar suka anjing-anjing is the answer.](./img1.png)
+
 <div align="center"><i>How would you write "The big cat likes the dogs" in Indonesian?</i></div>
 </br>
 

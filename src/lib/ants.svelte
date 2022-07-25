@@ -1,8 +1,6 @@
-<template>
-    <div><div id="main" class="w-100 h-100"></div></div>
-</template>
+<div><div id="main" class="w-100 h-100"></div></div>
 
-<script>
+<script lang="ts">
 import Two from 'two.js';
 
 var paths = [];
@@ -14,28 +12,16 @@ const CONTRAST_C = '#000000';
 const RADIUS = 200, K = 5;
 const PR = 30;
 const CELLSIZE = RADIUS * Math.SQRT1_2;
-var two, radialGrid;
-var offsetX, offsetY;
-var canvasW, canvasH;
+var two: Two, radialGrid;
+var offsetX: number, offsetY: number;
+var canvasW: number, canvasH: number;
 
 // convenience functions
-const distSq = (x1, x2, y1, y2) => {
+const distSq = (x1: number, x2: number, y1: number, y2: number) => {
     return (x1 - x2) ** 2 + (y1 - y2) ** 2;
 }
 
-const marsaglia = () => {
-    let u = 0, v = 0;
-
-    while (u * u + v * v == 0 || u * u + v * v >= 1) {
-        u = Math.random();
-        v = Math.random();
-    }
-
-    let s = u * u + v * v;
-    return u * Math.sqrt(-2 * Math.log(s) / s);
-}
-
-const closestHole = (cx, cy, r) => {
+const closestHole = (cx: number, cy: number, r: number) => {
     if (cx < PR || cx > two.width - PR || cy < PR || cy > two.height - PR)
         return -2;
 
@@ -51,57 +37,8 @@ const closestHole = (cx, cy, r) => {
     return -1;
 }
 
-const closestPeg = (x, y) => {
-    let xa = x - offsetX, ya =  y - offsetY;
-    let xb = (xa - PR) % (PR * 2) < PR ? xa - (xa % PR) : xa + PR - (xa % PR);
-    let yb = (ya - PR) % (PR * 2) < PR ? ya - (ya % PR) : ya + PR - (ya % PR);
-    return [xb + offsetX, yb + offsetY];
-}
-
-const radialGridLookUp = (x, y) => {
+const radialGridLookUp = (x: number, y: number) => {
     return (y / CELLSIZE | 0) * radialGrid[0].length + (x / CELLSIZE | 0); 
-}
-
-const poissonSampleHoles = () => {
-    var [sx, sy] = [...closestPeg(
-        (two.width - PR) * Math.random() + PR / 2,
-        (two.height - PR) * Math.random() + PR / 2
-    )];
-    var startHole = Hole(sx, sy, 20);
-    radialGrid[startHole.y / CELLSIZE | 0][startHole.x / CELLSIZE | 0] = startHole;
-    var active = [startHole];
-
-    while (active.length) {
-        var curInd = Math.random() * active.length | 0;
-        var parent = active[curInd];
-        const SEED = Math.random();
-        const EPSILON = 0.0000001;
-        var j;
-
-        for (j = 0; j < K; j++) {
-            var a = 2 * Math.PI * (SEED + 1.0 * j / K);
-            const r = RADIUS + EPSILON;
-            var x = parent.x + r * Math.cos(a), y = parent.y + r * Math.sin(a);
-
-            // let tmp = two.makeCircle(x, y, 5);
-            // tmp.noStroke();
-            // tmp.fill = 'black';
-            
-            if (closestHole(x, y, RADIUS) == -1) {
-                var [rx, ry] = [...closestPeg(x, y)];
-                var newHole = Hole(rx, ry, 20);
-                radialGrid[ry / CELLSIZE | 0][rx / CELLSIZE | 0] = newHole;
-                active.push(newHole);
-            }
-        }
-
-        if (j >= K) {
-            var lastHole = active.pop();
-
-            if (curInd < active.length)
-                active[curInd] = lastHole;
-        }
-    }
 }
 
 // classes
@@ -132,7 +69,7 @@ const Animatable = () => {
     }
 }
 
-const Hole = (x, y) => {
+const Hole = (x: number, y: number) => {
     const self = {
         ...Point(x, y, 20, '#7ac253'),
         polarity: 0,
@@ -144,7 +81,7 @@ const Hole = (x, y) => {
     };
 
     two.update();
-    document.getElementById(self.sprite.id).addEventListener('mousedown', e => {
+    document.getElementById(self.sprite.id)?.addEventListener('mousedown', e => {
         self.flip();
         paths.push(Path(self, Math.random() * 0.35 + 0.4, PARTY_SIZE));
     });
@@ -209,7 +146,7 @@ const Ant = (path, hill, p) => {
     return {...self, ...behaviours(self)};
 }
 
-const Path = (startHole, straightness, size) => {
+const Path = (startHole: typeof Hole, straightness: number, size: number) => {
     const self = {
         start: startHole,
         straightness: straightness,
@@ -262,7 +199,7 @@ const Path = (startHole, straightness, size) => {
     return self;
 }
 
-var run = () => {
+export const run = () => {
     var div = document.getElementById('main');
     two = new Two({ type: Two.Types.svg }).appendTo(div);
     window.addEventListener('resize', resize, false);
@@ -295,13 +232,11 @@ var run = () => {
                 a.stroke = b.stroke = '#3d6166';
                 a.linewidth = b.linewidth = 1;
             }
-
-        //poissonSampleHoles();
     }
 
     init();
 
-    two.bind('update', (f) => {
+    two.bind('update', (f: number) => {
         paths = paths.filter(p => !(p.antNum == PARTY_SIZE && p.ants.length == 0));
 
         paths.forEach(p => {
@@ -316,11 +251,6 @@ var run = () => {
         })
     }).play();
 };
-
-export default {
-    name: 'ants',
-    mounted() {run();}
-}
 </script>
 
 <style>

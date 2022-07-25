@@ -1,50 +1,36 @@
 {
-  "name": "nathankim7.github.io",
-  "version": "1.0.0",
-  "description": "Personal Website!",
-  "main": "index.js",
-  "scripts": {
-    "build": "webpack --progress --mode production",
-    "dev-build": "webpack --progress --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "webpack --progress --mode development --watch",
-    "dev": "webpack-dev-server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nathankim7/nathankim7.github.io.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nathankim7/nathankim7.github.io/issues"
-  },
-  "homepage": "https://github.com/nathankim7/nathankim7.github.io#readme",
-  "dependencies": {
-    "@vue/compiler-sfc": "^3.0.3",
-    "marked": "^3.0.2",
-    "marked-images": "^2.4.0",
-    "sanitize-html": "^2.4.0",
-    "tailwindcss": "^2.2.9",
-    "two.js": "^0.7.0-stable.1",
-    "vue": "^3.0.3"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@types/marked": "^3.0.0",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^5.0.1",
-    "file-loader": "^6.2.0",
-    "html-loader": "^1.3.2",
-    "markdown-loader": "^6.0.0",
-    "style-loader": "^2.0.0",
-    "vue-loader": "^16.0.0",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.12",
-    "webpack": "^5.8.0",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0"
-  }
+	"name": "nathankim7.github.io",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"package": "svelte-kit package",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
+		"format": "prettier --write --plugin-search-dir=. ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/kit": "next",
+		"@typescript-eslint/eslint-plugin": "^5.27.0",
+		"@typescript-eslint/parser": "^5.27.0",
+		"eslint": "^8.16.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-svelte3": "^4.0.0",
+		"prettier": "^2.6.2",
+		"prettier-plugin-svelte": "^2.7.0",
+		"svelte": "^3.44.0",
+		"svelte-check": "^2.7.1",
+		"svelte-preprocess": "^4.10.6",
+		"tslib": "^2.3.1",
+		"typescript": "^4.7.4",
+		"vite": "^3.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"two.js": "^0.8.10"
+	}
 }
