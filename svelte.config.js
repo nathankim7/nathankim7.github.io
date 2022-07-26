@@ -12,7 +12,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		paths: {
-			base: ''
+			base: dev ? '' : '/nathankim7.github.io'
 		},
 		prerender: {
 			default: true
