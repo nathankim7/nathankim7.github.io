@@ -1,0 +1,8 @@
+---
+title: Hello World!
+author: Nathan Kim
+---
+
+# {title} by {author}
+
+Some amazing content.

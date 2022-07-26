@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {base} from '$app/paths';
+	import { base } from '$app/paths';
 	import Ants from '$lib/ants.svelte';
 </script>
 
@@ -9,7 +9,7 @@
 </svelte:head>
 
 <div class="flex justify-center w-100 h-100">
-	<Ants></Ants>
+	<Ants />
 	<div id="content" class="flex flex-column flex-auto pa3">
 		<p id="tit" class="f1-ns tc ma0 b flex items-center justify-center w-100">
 			NATHAN KIM<img style="height: 1em" class="ph2" src="{base}/favicon.svg" alt="logo" />
@@ -31,9 +31,9 @@
 			. Intermittently, I've also been a full-stack web dev and an Android developer. Feel free to check
 			out my code on<a href="https://github.com/nathankim7">Github</a>, connect with me on
 			<a href="https://www.linkedin.com/in/nathan-kim-71b568155/">Linkedin</a>, and take my
-			<a href="{base}/files/Nathan_Kim_Resume.pdf">resume</a>. Any questions or comments can be directed
-			to me by filling in the blanks at
-			<a href="{base}">na&#116;&#104;angk&#64;st_n&#102;_rd&#46;edu</a>.
+			<a href="{base}/files/Nathan_Kim_Resume.pdf">resume</a>. Any questions or comments can be
+			directed to me by filling in the blanks at
+			<a href={base}>na&#116;&#104;angk&#64;st_n&#102;_rd&#46;edu</a>.
 		</span>
 		<!-- <ul style="font-size: 1.3rem" class="mt2 ma0 mb5 pl3">
             <li>if</li>

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import {onMount} from 'svelte';
+	import { onMount } from 'svelte';
 	import Two from 'two.js';
-	import type { Circle } from "two.js/src/shapes/circle";
+	import type { Circle } from 'two.js/src/shapes/circle';
 
 	let innerHeight: number;
 	let clientHeight: number;
@@ -272,9 +272,11 @@
 			.play();
 	};
 
-	onMount(() => { run(); });
+	onMount(() => {
+		run();
+	});
 </script>
 
-<svelte:window bind:innerHeight/>
+<svelte:window bind:innerHeight />
 
 <div bind:this={div} id="bg" bind:clientHeight class="w-100 h-100 ants" />
