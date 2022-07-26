@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {base} from '$app/paths';
+	import Ants from '$lib/ants.svelte';
 </script>
 
 <svelte:head>
@@ -8,7 +9,7 @@
 </svelte:head>
 
 <div class="flex justify-center w-100 h-100">
-	<ants id="bg" class="w-100 h-100" />
+	<Ants></Ants>
 	<div id="content" class="flex flex-column flex-auto pa3">
 		<p id="tit" class="f1-ns tc ma0 b flex items-center justify-center w-100">
 			NATHAN KIM<img style="height: 1em" class="ph2" src="{base}/favicon.svg" alt="logo" />
@@ -60,7 +61,7 @@
 <style>
 	@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-	#bg {
+	:global(#bg) {
 		position: absolute;
 		z-index: 0;
 	}

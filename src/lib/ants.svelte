@@ -1,5 +1,10 @@
 <script lang="ts">
+	import {onMount} from 'svelte';
 	import Two from 'two.js';
+	import type { Circle } from "two.js/src/shapes/circle";
+
+	let innerHeight: number;
+	let clientHeight: number;
 
 	var paths = [];
 	const PARTY_SIZE = 10,
@@ -46,13 +51,13 @@
 	};
 
 	// classes
-	const Point = (x, y, r, c) => {
+	const Point = (x: number, y: number, r: number, c: string) => {
 		const self = {
 			x: x,
 			y: y,
 			radius: r,
 			colour: c,
-			sprite: {},
+			sprite: <Circle>{},
 			render() {
 				this.sprite.translation.set(this.x, this.y);
 				this.sprite.fill = this.colour;
@@ -85,14 +90,14 @@
 		};
 
 		two.update();
-		document.getElementById(self.sprite.id)?.addEventListener('mousedown', (e) => {
-			self.flip();
-			paths.push(Path(self, Math.random() * 0.35 + 0.4, PARTY_SIZE));
-		});
+		// document.getElementById(self.sprite.id)?.addEventListener('mousedown', (e) => {
+		// 	self.flip();
+		// 	paths.push(Path(self, Math.random() * 0.35 + 0.4, PARTY_SIZE));
+		// });
 		return self;
 	};
 
-	const Ant = (path, hill, p) => {
+	const Ant = (path, hill, p: number) => {
 		const self = {
 			...Animatable(),
 			...Point(hill.x, hill.y, 10, p == 1 ? CONTRAST_C : '#7ac253'),
@@ -118,7 +123,7 @@
 						self.sprite.remove();
 						hole.flip();
 
-						if (Math.random < 0.1) paths.push(Path(hole, Math.random() * 0.35 + 0.4, PARTY_SIZE));
+						if (Math.random() < 0.1) paths.push(Path(hole, Math.random() * 0.35 + 0.4, PARTY_SIZE));
 						return;
 					}
 				}
@@ -154,7 +159,7 @@
 		return { ...self, ...behaviours(self) };
 	};
 
-	const Path = (startHole: typeof Hole, straightness: number, size: number) => {
+	const Path = (startHole, straightness: number, size: number) => {
 		const self = {
 			start: startHole,
 			straightness: straightness,
@@ -164,7 +169,7 @@
 			ants: [],
 			num: 0,
 			antNum: 0,
-			make(px, py, pd) {
+			make(px: number, py: number, pd: number) {
 				let type = Math.random();
 
 				if (type < this.straightness) {
@@ -205,15 +210,16 @@
 		return self;
 	};
 
-	export const run = () => {
-		var div = document.getElementById('main');
-		two = new Two({ type: Two.Types.svg }).appendTo(div);
+	let div: HTMLElement;
+
+	const run = () => {
+		two = new Two({ type: Two.Types.canvas }).appendTo(div);
 		window.addEventListener('resize', resize, false);
 		resize();
 		two.renderer.domElement.style.display = 'block';
 
 		function resize() {
-			let h = Math.max(document.body.clientHeight, window.innerHeight);
+			let h = Math.max(clientHeight, innerHeight);
 			two.width = screen.availWidth;
 			two.height = h;
 			two.renderer.setSize(screen.availWidth, h);
@@ -265,9 +271,10 @@
 			})
 			.play();
 	};
+
+	onMount(() => { run(); });
 </script>
 
-<div><div id="main" class="w-100 h-100" /></div>
+<svelte:window bind:innerHeight/>
 
-<style>
-</style>
+<div bind:this={div} id="bg" bind:clientHeight class="w-100 h-100 ants" />
