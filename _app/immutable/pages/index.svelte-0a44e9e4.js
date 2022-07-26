@@ -1,0 +1,23 @@
+import{S as bt,i as gt,s as kt,l as a,a as A,u as n,K as wt,m as l,h as r,c as x,p as d,v as i,q as e,r as H,L as At,J as t,b as yt,n as rt}from"../chunks/index-164a6af3.js";function xt(it){let m,O,u,j,G,c,p,K,f,ct,L,N,R,s,V,E,W,M,z,T,D,I,F,U,_,$,C,y,J,B,b,Q,X,g,Y,Z,tt,k,et,st,S,at,w,nt;return{c(){m=a("link"),O=A(),u=a("div"),j=a("ants"),G=A(),c=a("div"),p=a("p"),K=n("NATHAN KIM"),f=a("img"),L=A(),N=a("hr"),R=A(),s=a("span"),V=n(`Hi! I'm a sophomore student at Stanford University interested in
+			`),E=a("p"),W=n("computers"),M=n(`
+			and
+			`),z=a("p"),T=n("language"),D=n(`
+			and especially
+			`),I=a("p"),F=n("things that combine the two"),U=n(`
+			. Intermittently, I've also been a full-stack web dev and an Android developer. Feel free to check
+			out my code on`),_=a("a"),$=n("Github"),C=n(`, connect with me on
+			`),y=a("a"),J=n("Linkedin"),B=n(`, and take my
+			`),b=a("a"),Q=n("resume"),X=n(`. Any questions or comments can be directed
+			to me by filling in the blanks at
+			`),g=a("a"),Y=n("nathangk@st_nf_rd.edu"),Z=n("."),tt=A(),k=a("p"),et=n("things that might interest you"),st=A(),S=a("hr"),at=A(),w=a("a"),nt=n("[Web App] Odd One Out: A Game of Words in Vector Semantics"),this.h()},l(v){const q=wt('[data-svelte="svelte-e8wxlh"]',document.head);m=l(q,"LINK",{rel:!0,href:!0}),q.forEach(r),O=x(v),u=l(v,"DIV",{class:!0});var P=d(u);j=l(P,"ANTS",{id:!0,class:!0}),d(j).forEach(r),G=x(P),c=l(P,"DIV",{id:!0,class:!0});var h=d(c);p=l(h,"P",{id:!0,class:!0});var lt=d(p);K=i(lt,"NATHAN KIM"),f=l(lt,"IMG",{style:!0,class:!0,src:!0,alt:!0}),lt.forEach(r),L=x(h),N=l(h,"HR",{class:!0,style:!0}),R=x(h),s=l(h,"SPAN",{style:!0,class:!0});var o=d(s);V=i(o,`Hi! I'm a sophomore student at Stanford University interested in
+			`),E=l(o,"P",{class:!0});var ot=d(E);W=i(ot,"computers"),ot.forEach(r),M=i(o,`
+			and
+			`),z=l(o,"P",{class:!0});var dt=d(z);T=i(dt,"language"),dt.forEach(r),D=i(o,`
+			and especially
+			`),I=l(o,"P",{class:!0});var ht=d(I);F=i(ht,"things that combine the two"),ht.forEach(r),U=i(o,`
+			. Intermittently, I've also been a full-stack web dev and an Android developer. Feel free to check
+			out my code on`),_=l(o,"A",{href:!0,class:!0});var ut=d(_);$=i(ut,"Github"),ut.forEach(r),C=i(o,`, connect with me on
+			`),y=l(o,"A",{href:!0,class:!0});var mt=d(y);J=i(mt,"Linkedin"),mt.forEach(r),B=i(o,`, and take my
+			`),b=l(o,"A",{href:!0,class:!0});var pt=d(b);Q=i(pt,"resume"),pt.forEach(r),X=i(o,`. Any questions or comments can be directed
+			to me by filling in the blanks at
+			`),g=l(o,"A",{href:!0,class:!0});var ft=d(g);Y=i(ft,"nathangk@st_nf_rd.edu"),ft.forEach(r),Z=i(o,"."),o.forEach(r),tt=x(h),k=l(h,"P",{id:!0,class:!0});var vt=d(k);et=i(vt,"things that might interest you"),vt.forEach(r),st=x(h),S=l(h,"HR",{class:!0,style:!0}),at=x(h),w=l(h,"A",{class:!0,href:!0});var _t=d(w);nt=i(_t,"[Web App] Odd One Out: A Game of Words in Vector Semantics"),_t.forEach(r),h.forEach(r),P.forEach(r),this.h()},h(){e(m,"rel","stylesheet"),e(m,"href","https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"),e(j,"id","bg"),e(j,"class","w-100 h-100 svelte-ip78zj"),H(f,"height","1em"),e(f,"class","ph2"),At(f.src,ct="./favicon.svg")||e(f,"src",ct),e(f,"alt","logo"),e(p,"id","tit"),e(p,"class","f1-ns tc ma0 b flex items-center justify-center w-100 svelte-ip78zj"),e(N,"class","w-100 ma0 mt3"),H(N,"border","2px solid black"),e(E,"class","rainbow-text svelte-ip78zj"),e(z,"class","rainbow-text svelte-ip78zj"),e(I,"class","rainbow-text svelte-ip78zj"),e(_,"href","https://github.com/nathankim7"),e(_,"class","svelte-ip78zj"),e(y,"href","https://www.linkedin.com/in/nathan-kim-71b568155/"),e(y,"class","svelte-ip78zj"),e(b,"href","/files/Nathan_Kim_Resume.pdf"),e(b,"class","svelte-ip78zj"),e(g,"href","/"),e(g,"class","svelte-ip78zj"),H(s,"font-size","1.3rem"),H(s,"line-height","1.3em"),e(s,"class","ma0 mt3 w-100 content svelte-ip78zj"),e(k,"id","tit2"),e(k,"class","f2-ns tc ma0 mt5 mb2 w-100 b svelte-ip78zj"),e(S,"class","w-100 ma0 mv2"),H(S,"border","2px solid black"),e(w,"class","mt2 f4 content svelte-ip78zj"),e(w,"href","https://oddoneout.herokuapp.com/"),e(c,"id","content"),e(c,"class","flex flex-column flex-auto pa3 svelte-ip78zj"),e(u,"class","flex justify-center w-100 h-100")},m(v,q){t(document.head,m),yt(v,O,q),yt(v,u,q),t(u,j),t(u,G),t(u,c),t(c,p),t(p,K),t(p,f),t(c,L),t(c,N),t(c,R),t(c,s),t(s,V),t(s,E),t(E,W),t(s,M),t(s,z),t(z,T),t(s,D),t(s,I),t(I,F),t(s,U),t(s,_),t(_,$),t(s,C),t(s,y),t(y,J),t(s,B),t(s,b),t(b,Q),t(s,X),t(s,g),t(g,Y),t(s,Z),t(c,tt),t(c,k),t(k,et),t(c,st),t(c,S),t(c,at),t(c,w),t(w,nt)},p:rt,i:rt,o:rt,d(v){r(m),v&&r(O),v&&r(u)}}}function jt(it){return[]}class zt extends bt{constructor(m){super(),gt(this,m,jt,xt,kt,{})}}export{zt as default};
