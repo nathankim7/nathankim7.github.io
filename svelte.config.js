@@ -8,11 +8,7 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			fallback: true
-		})
+		adapter: adapter()
 	}
 };
 
