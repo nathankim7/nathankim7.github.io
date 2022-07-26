@@ -10,10 +10,13 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter({
-			pages: 'build',
-			fallback: 'index.html'
-		})
+		adapter: adapter(),
+		paths: {
+			base: ''
+		},
+		prerender: {
+			default: true
+		}
 	}
 };
 
