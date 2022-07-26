@@ -8,10 +8,11 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter(),
-		prerender: {
-			default: true
-		}
+		adapter: adapter({
+			pages: 'build',
+			assets: 'build',
+			fallback: true
+		}),
 	}
 };
 
