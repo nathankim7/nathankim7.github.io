@@ -5,6 +5,7 @@
 		"dev": "vite dev",
 		"build": "rm -rf ./build && vite build",
 		"package": "svelte-kit package",
+		"predeploy": "npm run build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync && husky install",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
