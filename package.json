@@ -14,9 +14,9 @@
 		"deploy": "npx gh-pages -d build -t true"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/adapter-static": "^1.0.0-next.38",
-		"@sveltejs/kit": "next",
+		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-static": "^2.0.1",
+		"@sveltejs/kit": "^1.5.5",
 		"@typescript-eslint/eslint-plugin": "^5.31.0",
 		"@typescript-eslint/parser": "^5.31.0",
 		"esbuild": "^0.14.50",
@@ -34,7 +34,7 @@
 		"svelte-preprocess": "^4.10.7",
 		"tslib": "^2.4.0",
 		"typescript": "^4.7.4",
-		"vite": "^3.0.3"
+		"vite": "^4.1.1"
 	},
 	"type": "module",
 	"dependencies": {

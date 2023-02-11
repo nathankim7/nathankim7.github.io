@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "Launch",
+            "program": "bash vite preview",
+        },
+
+    ]
+}
