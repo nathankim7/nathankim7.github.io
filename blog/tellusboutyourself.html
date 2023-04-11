@@ -5,14 +5,15 @@
 		<link rel="icon" href="../favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="content-security-policy" content="">
-		<link rel="modulepreload" href="../_app/immutable/start-2562c8e0.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/index-83ca9dda.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons-a755e752.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths-69ad0af0.js">
-		<link rel="modulepreload" href="../_app/immutable/components/layout.svelte-3102bb2b.js">
-		<link rel="modulepreload" href="../_app/immutable/modules/pages/_layout.ts-fa3c4266.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/_layout-9a8b0c19.js">
-		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/tellusboutyourself/_page.svelte-01bf6520.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.07f2ac2a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.52372c40.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.dfe5faab.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.e16d0f3e.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.eac2dd9b.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/layout.svelte.b1d34a1e.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/_layout.ts.984db11e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_layout.da46b06b.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/blog-tellusboutyourself-page.svelte.734ed3db.js">
 	</head>
 	<body>
 		<div>
@@ -83,22 +84,30 @@
 	</p></div>
 
 
-		<script type="module" data-sveltekit-hydrate="1nrko6s">
-			import { start } from "../_app/immutable/start-2562c8e0.js";
+			
+			<script>
+				{
+					__sveltekit_1xnvi35 = {
+						env: {},
+						base: new URL("..", location).pathname.slice(0, -1),
+						element: document.currentScript.parentElement
+					};
 
-			start({
-				assets: "",
-				env: {},
-				target: document.querySelector('[data-sveltekit-hydrate="1nrko6s"]').parentNode,
-				version: "1676536566267",
-				hydrate: {
-					node_ids: [0, 5],
-					data: [null,null],
-					form: null,
-					error: null
+					const data = [null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.07f2ac2a.js"),
+						import("../_app/immutable/entry/app.eac2dd9b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, __sveltekit_1xnvi35.element, {
+							node_ids: [0, 5],
+							data,
+							form: null,
+							error: null
+						});
+					});
 				}
-			});
-		</script>
-	</div>
+			</script>
+		</div>
 	</body>
 </html>
