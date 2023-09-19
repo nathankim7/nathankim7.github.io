@@ -29,7 +29,7 @@
 			and especially
 			<p class="rainbow-text">things that combine the two</p>
 			. Intermittently, I've also been a full-stack web dev and an Android developer. Feel free to check
-			out my code on<a href="https://github.com/nathankim7">Github</a>, connect with me on
+			out my code on{' '}<a href="https://github.com/nathankim7">Github</a>, connect with me on
 			<a href="https://www.linkedin.com/in/nathan-kim-71b568155/">Linkedin</a>, browse my
 			<a href="https://scholar.google.com/citations?user=OQKjhFcAAAAJ&hl=en">publications</a>, and
 			take my
