@@ -22,7 +22,7 @@
             <p class="i f3 ml2 mt0 mb3 mr0">contact: <a href="#">nathangk@stanford.edu</a></p>
         </div> -->
 		<span style="font-size: 1.3rem; line-height: 1.3em" class="ma0 mt3 w-100 content">
-			Hi! I'm a third-year student at Stanford University interested in
+			Hi! I'm a fourth-year student at Stanford University interested in
 			<p class="rainbow-text">computers</p>
 			and
 			<p class="rainbow-text">language</p>
