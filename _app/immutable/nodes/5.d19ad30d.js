@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="../favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-		<link rel="modulepreload" href="../_app/immutable/entry/start.9023b7ab.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/scheduler.b95eede2.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.f4f2ed28.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.ad635041.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.007445cb.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/index.9866a4a3.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/0.b13a3a9d.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/5.d19ad30d.js">
-	</head>
-	<body>
-		<div>  <div style="background-color: white; font-family: 'Courier Prime', Courier, monospace" data-svelte-h="svelte-5dj2qx"><p style="max-width: 60%"><b>&quot;tellusboutyourself&quot; by Yerin Baek (백예린)</b></p> <p style="max-width: 60%">Korean-style synthpop record with elements of dance and R&amp;B. K-indie queen Yerin Baek returns
+import{s as r,n as a}from"../chunks/scheduler.b95eede2.js";import{S as h,i as l,g as d,h as p,B as c,l as s,a as m,f as u}from"../chunks/index.9866a4a3.js";function y(i){let e,o=`<p style="max-width: 60%"><b>&quot;tellusboutyourself&quot; by Yerin Baek (백예린)</b></p> <p style="max-width: 60%">Korean-style synthpop record with elements of dance and R&amp;B. K-indie queen Yerin Baek returns
 		for her second full-length album, trading off the wistful keys and guitar ballads of 2019&#39;s
 		&quot;Every letter I sent you&quot; for a MIDI-programmed sound that retains her trademark melancholy at
 		its heart. The record&#39;s fourteen tracks aren&#39;t coy about their influences, ranging from city pop
@@ -44,32 +27,4 @@
 		vocals (love is a bubble!) in this hip album closer. Filtered kicks pump the listener through
 		the bridge before the comp returns in full force for the final chorus. Ms. Baek&#39;s curt and
 		carefree lyrics make this track into a sympathetic acid-trip near-parody of the album&#39;s gravity
-		as a whole, and I&#39;m all for it.</p></div> 
-			
-			<script>
-				{
-					__sveltekit_wflbnd = {
-						base: new URL("..", location).pathname.slice(0, -1),
-						env: {}
-					};
-
-					const element = document.currentScript.parentElement;
-
-					const data = [null,null];
-
-					Promise.all([
-						import("../_app/immutable/entry/start.9023b7ab.js"),
-						import("../_app/immutable/entry/app.007445cb.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 5],
-							data,
-							form: null,
-							error: null
-						});
-					});
-				}
-			</script>
-		</div>
-	</body>
-</html>
+		as a whole, and I&#39;m all for it.</p>`;return{c(){e=d("div"),e.innerHTML=o,this.h()},l(t){e=p(t,"DIV",{style:!0,"data-svelte-h":!0}),c(e)!=="svelte-5dj2qx"&&(e.innerHTML=o),this.h()},h(){s(e,"background-color","white"),s(e,"font-family","'Courier Prime', Courier, monospace")},m(t,n){m(t,e,n)},p:a,i:a,o:a,d(t){t&&u(e)}}}class w extends h{constructor(e){super(),l(this,e,null,y,r,{})}}export{w as component};
