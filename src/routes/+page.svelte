@@ -47,6 +47,9 @@
 		<a class="mt2 f4 content" href="https://oddoneout.herokuapp.com/"
 			>[Web App] Odd One Out: A Game of Words in Vector Semantics</a
 		>
+		<a class="mt2 f4 content" href="https://oddoneout.herokuapp.com/"
+			>[Blog Post] Pay Attention! Linguistic Problem Solving Tutorial (for NACLO 2021)</a
+		>
 		<!-- <p class="f3 ma0 w-100 i tracked">1234567890 !@#$%^&*()_+~{}|:"?</p>
         <p class="f3 ma0 w-100 i tracked" style="font-family: Arial">1234567890 !@#$%^&*()_+~{}|:"?</p>
         <p class="f3 ma0 w-100 i tracked">1234567890 !@#$%^&*()_+~{}|:"?</p>

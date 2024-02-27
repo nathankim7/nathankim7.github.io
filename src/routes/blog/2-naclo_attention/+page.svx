@@ -16,7 +16,7 @@ And the best part is, you don't even need to know any linguistics to get started
 
 Which brings me to the walkthrough video. I took one of my favourite NACLO problems in recent memory, Pay Attention (it's about reverse-engineering attention heads, so all you NLP people, listen up), and walk through all the content and the background in a way that NACLO newbies and masters alike can pick up on. If you're curious about the kind of reasoning we tend to look for on the NACLO contests and the content we seek to teach, this would be a great place to start!
 
-[Watch the video here!](https://www.google.com "Google's Homepage")
+[Watch the video here!](https://youtu.be/c-dY9jO3cFw?si=E4zHF31eZO1yx1f7 'NACLOweb on YouTube')
 
 If you liked what I put up, and you are a resident of the United States or Canada under the age of 20 and not enrolled in any post-secondary educational programs (homeschoolers welcome too!) whose primary language is English, please please please register for the upcoming NACLO contest to do more fun puzzles like this one! You can register for one of our in-person sites by January 27 or choose to do it at home by registering by January 15th. If you know any eligible students, please please spread the word as well!
 
