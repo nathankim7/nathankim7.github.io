@@ -8,7 +8,7 @@
 	<!-- <script src="static/two.min.js"></script> -->
 </svelte:head>
 
-<div class="flex justify-center w-100 h-100">
+<div class="flex justify-center w-100 h-screen">
 	<Ants />
 	<div id="content" class="flex flex-column flex-auto pa3">
 		<p id="tit" class="f1-ns tc ma0 b flex items-center justify-center w-100">
@@ -22,7 +22,7 @@
             <p class="i f3 ml2 mt0 mb3 mr0">contact: <a href="#">nathangk@stanford.edu</a></p>
         </div> -->
 		<span style="font-size: 1.3rem; line-height: 1.3em" class="ma0 mt3 w-100 content">
-			Hi! I'm a fourth-year student at Stanford University interested in
+			Hi! I'm a Stanford alum interested in
 			<p class="rainbow-text">computers</p>
 			and
 			<p class="rainbow-text">language</p>

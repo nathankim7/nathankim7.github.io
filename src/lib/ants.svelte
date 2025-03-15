@@ -1,12 +1,48 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import type { Action } from 'svelte/action';
 	import Two from 'two.js';
 	import type { Circle } from 'two.js/src/shapes/circle';
 
-	let innerHeight: number;
-	let clientHeight: number;
+	type HoleType = ReturnType<typeof Hole>;
+	type PointType = ReturnType<typeof Point>;
+	type MoveType = {
+		d: 0 | 1 | 2 | 3;
+	} & (
+		| {
+				type: 'curve';
+				r: number;
+				c: {
+					x: number;
+					y: number;
+				};
+				turn: 1 | -1;
+		  }
+		| {
+				type: 'straight';
+				l: number;
+		  }
+	);
+	type AntType = ReturnType<typeof Animatable> &
+		PointType & {
+			p: number;
+			path: PathType;
+			progress: number;
+			ind: number;
+			move: () => void;
+		};
+	type PathType = {
+		start: HoleType;
+		straightness: number;
+		size: number;
+		startFrame: number;
+		moves: MoveType[];
+		ants: AntType[];
+		num: number;
+		antNum: number;
+		make(px: number, py: number, pd: number): void;
+	};
 
-	var paths = [];
+	let paths: PathType[] = [];
 	const PARTY_SIZE = 10,
 		ANT_V = 1;
 	const MIN_PATH_DIST = 2,
@@ -19,7 +55,7 @@
 		K = 5;
 	const PR = 30;
 	const CELLSIZE = RADIUS * Math.SQRT1_2;
-	var two: Two, radialGrid;
+	var two: Two, radialGrid: HoleType[][];
 	var offsetX: number, offsetY: number;
 	var canvasW: number, canvasH: number;
 
@@ -97,70 +133,68 @@
 		return self;
 	};
 
-	const Ant = (path, hill, p: number) => {
-		const self = {
+	const Ant = (path: PathType, hill: PointType, p: number): AntType => {
+		const self: AntType = {
 			...Animatable(),
 			...Point(hill.x, hill.y, 10, p == 1 ? CONTRAST_C : '#7ac253'),
 			p: p,
 			path: path,
 			progress: 0, // radian angle covered if curve, pixels covered if straight
-			ind: 0
+			ind: 0,
+			move: () => {}
 		};
 
-		const behaviours = (self) => ({
-			move: () => {
-				let closest = closestHole(self.x, self.y, 20);
+		const move = () => {
+			let closest = closestHole(self.x, self.y, 20);
 
-				if (closest >= 0) {
-					let hole =
-						radialGrid[(closest / radialGrid[0].length) | 0][closest % radialGrid[0].length];
+			if (closest >= 0) {
+				let hole = radialGrid[(closest / radialGrid[0].length) | 0][closest % radialGrid[0].length];
 
-					if (
-						closest != radialGridLookUp(self.path.start.x, self.path.start.y) &&
-						hole.polarity != self.p
-					) {
-						self.flags.remove = true;
-						self.sprite.remove();
-						hole.flip();
+				if (
+					closest != radialGridLookUp(self.path.start.x, self.path.start.y) &&
+					hole.polarity != self.p
+				) {
+					self.flags.remove = true;
+					self.sprite.remove();
+					hole.flip();
 
-						if (Math.random() < 0.1) paths.push(Path(hole, Math.random() * 0.35 + 0.4, PARTY_SIZE));
-						return;
-					}
-				}
-
-				if (self.ind == self.path.num) {
-					self.path.make(self.x, self.y, self.path.moves[self.ind - 1].d);
-				}
-
-				let move = self.path.moves[self.ind];
-
-				if (move.type == 'curve') {
-					self.progress += ANT_V / move.r;
-					let a = self.progress;
-					self.x = move.c.x + move.r * Math.cos(move.turn * a + ((move.d + 2) * Math.PI) / 2);
-					self.y = move.c.y - move.r * Math.sin(move.turn * a + ((move.d + 2) * Math.PI) / 2);
-				} else if (move.type == 'straight') {
-					self.progress += ANT_V;
-					self.x += (move.d > 1 ? -1 : 1) * ((move.d + 1) % 2) * ANT_V;
-					self.y += (move.d > 1 ? 1 : -1) * (move.d % 2) * ANT_V;
-				}
-
-				self.x = ((self.x - offsetX + canvasW) % canvasW) + offsetX;
-				self.y = ((self.y - offsetY + canvasH) % canvasH) + offsetY;
-				self.render();
-
-				if (self.progress > (move.type == 'curve' ? Math.PI / 2 : move.l)) {
-					self.ind++;
-					self.progress = 0;
+					if (Math.random() < 0.1) paths.push(Path(hole, Math.random() * 0.35 + 0.4, PARTY_SIZE));
+					return;
 				}
 			}
-		});
 
-		return { ...self, ...behaviours(self) };
+			if (self.ind == self.path.num) {
+				self.path.make(self.x, self.y, self.path.moves[self.ind - 1].d);
+			}
+
+			let move = self.path.moves[self.ind];
+
+			if (move.type == 'curve') {
+				self.progress += ANT_V / move.r;
+				let a = self.progress;
+				self.x = move.c.x + move.r * Math.cos(move.turn * a + ((move.d + 2) * Math.PI) / 2);
+				self.y = move.c.y - move.r * Math.sin(move.turn * a + ((move.d + 2) * Math.PI) / 2);
+			} else {
+				self.progress += ANT_V;
+				self.x += (move.d > 1 ? -1 : 1) * ((move.d + 1) % 2) * ANT_V;
+				self.y += (move.d > 1 ? 1 : -1) * (move.d % 2) * ANT_V;
+			}
+
+			self.x = ((self.x - offsetX + canvasW) % canvasW) + offsetX;
+			self.y = ((self.y - offsetY + canvasH) % canvasH) + offsetY;
+			self.render();
+
+			if (self.progress > (move.type == 'curve' ? Math.PI / 2 : move.l)) {
+				self.ind++;
+				self.progress = 0;
+			}
+		};
+
+		return { ...self, move };
 	};
 
-	const Path = (startHole, straightness: number, size: number) => {
-		const self = {
+	const Path = (startHole: HoleType, straightness: number, size: number): PathType => {
+		const self: PathType = {
 			start: startHole,
 			straightness: straightness,
 			size: size,
@@ -169,8 +203,8 @@
 			ants: [],
 			num: 0,
 			antNum: 0,
-			make(px: number, py: number, pd: number) {
-				let type = Math.random();
+			make(px: number, py: number, pd: 0 | 1 | 2 | 3) {
+				const type = Math.random();
 
 				if (type < this.straightness) {
 					this.moves.push({
@@ -179,12 +213,12 @@
 						l: ((Math.random() * (MAX_PATH_DIST - MIN_PATH_DIST)) | (0 + MIN_PATH_DIST)) * PR * 2
 					});
 				} else {
-					let move = {
+					const move: Record<string, any> = {
 						type: 'curve',
 						r: ((Math.random() * (MAX_PATH_DIST - MIN_PATH_DIST)) | (0 + MIN_PATH_DIST)) * PR * 2
 					};
 
-					let turn = Math.random();
+					const turn = Math.random();
 
 					if (turn > 0.5) {
 						move.d = (pd + 1) % 4;
@@ -199,7 +233,7 @@
 						y: py - move.r * Math.sin((Math.PI / 2) * move.d)
 					};
 
-					this.moves.push(move);
+					this.moves.push(move as MoveType);
 				}
 
 				this.num++;
@@ -210,19 +244,17 @@
 		return self;
 	};
 
-	let div: HTMLElement;
-
-	const run = () => {
-		two = new Two({ type: Two.Types.canvas }).appendTo(div);
+	const run: Action = (node) => {
+		two = new Two({ type: Two.Types.canvas }).appendTo(node);
 		window.addEventListener('resize', resize, false);
 		resize();
 		two.renderer.domElement.style.display = 'block';
 
 		function resize() {
-			let h = Math.max(clientHeight, innerHeight);
-			two.width = screen.availWidth;
+			let h = Math.max(node.clientHeight, window.innerHeight);
+			two.width = node.clientWidth;
 			two.height = h;
-			two.renderer.setSize(screen.availWidth, h);
+			two.renderer.setSize(node.clientWidth, h);
 		}
 
 		radialGrid = new Array(Math.ceil(two.height / CELLSIZE));
@@ -271,12 +303,8 @@
 			})
 			.play();
 	};
-
-	onMount(() => {
-		run();
-	});
 </script>
 
-<svelte:window bind:innerHeight />
+<svelte:window />
 
-<div bind:this={div} id="bg" bind:clientHeight class="w-100 h-100 ants" />
+<div use:run id="bg" class="w-100 ants"></div>
