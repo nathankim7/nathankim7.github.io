@@ -1,0 +1,1 @@
+import{t as e,a as n}from"../chunks/ozE5oXuG.js";import"../chunks/BSEtKNoh.js";import{p as r,q as m}from"../chunks/GswOLHAx.js";const p={title:"Hello World!",author:"Nathan Kim"},{title:i,author:s}=p;var h=e("<h1></h1> <p>Some amazing content.</p>",1);function d(a){var t=h(),o=r(t);o.textContent=`${i} by ${s}`,m(2),n(a,t)}export{d as component};
